@@ -34,7 +34,7 @@ class ReviewRepository(c:Context){
  private fun parseGoal(o:JSONObject)=Goal(o.optString("id",UUID.randomUUID().toString()),o.optString("title"),o.optString("message"),o.optLong("start"),o.optLong("end"),o.optBoolean("completed"))
  private fun loadTasks()=mutableListOf<ReviewTask>().also{a->val j=JSONArray(p.getString("tasks","[]"));for(i in 0 until j.length())a.add(parseTask(j.getJSONObject(i)))}
  private fun loadGoals()=mutableListOf<Goal>().also{a->val j=JSONArray(p.getString("goals","[]"));for(i in 0 until j.length())a.add(parseGoal(j.getJSONObject(i)))}
- private fun loadFolders()=mutableListOf<Folder>().also{a->val j=JSONArray(p.getString("folders", "[{"id":"default","name":"عام","icon":"📚"}]"));for(i in 0 until j.length()){val o=j.getJSONObject(i);a.add(Folder(o.optString("id"),o.optString("name"),o.optString("icon","📚")))}}
+ private fun loadFolders()=mutableListOf<Folder>().also{a->val j=JSONArray(p.getString("folders", "[{\"id\":\"default\",\"name\":\"عام\",\"icon\":\"📚\"}]"));for(i in 0 until j.length()){val o=j.getJSONObject(i);a.add(Folder(o.optString("id"),o.optString("name"),o.optString("icon","📚")))}}
  private fun loadChats()=mutableListOf<ChatMessage>().also{a->val j=JSONArray(p.getString("chats","[]"));for(i in 0 until j.length()){val o=j.getJSONObject(i);a.add(ChatMessage(o.optString("r"),o.optString("t"),o.optLong("time")))}}
 }
 fun fmtDate(ms:Long):String=SimpleDateFormat("yyyy/MM/dd",Locale("ar")).format(Date(ms))
