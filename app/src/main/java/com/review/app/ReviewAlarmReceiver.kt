@@ -1,4 +1,4 @@
-package com.review.smart
+package com.review.app
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent

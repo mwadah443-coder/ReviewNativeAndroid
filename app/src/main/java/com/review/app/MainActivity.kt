@@ -1,4 +1,4 @@
-package com.review.smart
+package com.review.app
 
 import android.Manifest
 import android.app.AlarmManager
